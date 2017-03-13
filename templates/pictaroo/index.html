@@ -1,0 +1,61 @@
+{% extends 'pictaroo/base.html' %}
+{% load staticfiles %}
+{% block title_block %}
+    Index
+{% endblock %}
+
+{% block body_block %}
+        <h1>Pictaroo </h1>
+            {% if user.is_authenticated %}
+                Welcome Back {{ user.username }}!
+            {% else %}
+            <form id="login_form" method="post" action="{% url 'auth_login' %}">
+            {% csrf_token %}
+            Username: <input type="text" name="username" value="" size="50" />
+            <br />
+            Password: <input type="password" name="password" value="" size="50" />
+            <br />
+            <input type="submit" value="submit" />
+
+            <p>--- OR --- </p>
+
+
+                Register your account <a href="{% url 'registration_register' %}">Click Here!</a>
+            {% endif %}
+
+        <div>
+            <div>
+                <h3>Trending Categories</h3>
+            </div>
+            {% if categories %}
+        <ul>
+            {% for category in categories %}
+            <li>
+                <a href="/pictaroo/category/{{ category.slug }}">{{ category.name}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong> There are no categories present. </strong>
+        {% endif %}
+        </div>
+
+        <div>
+             <h3>Trending Images</h3>
+            {% if image %}
+                <ul>
+                    {% for image in images %}
+                        <li>
+                            <a href="{{ image.url }}">{{ image.title}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <strong>No Images currently in category. </strong>
+            {% endif %}
+
+        <br />
+
+
+        </div>
+{% endblock %}
