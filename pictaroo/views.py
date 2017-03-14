@@ -158,7 +158,7 @@ def add_image(request, category_name_slug):
                 print(form.errors)
 
     context_dict = {'form': form, 'category': category}
-    return render (request, 'pictaroo/add_images.html', context_dict)
+    return render (request, 'pictaroo/add_image.html', context_dict)
 
 
 @login_required
@@ -170,7 +170,7 @@ def my_account(request, username):
         return redirect('index')
 
     userprofile = UserProfile.objects.get_or_create(user=user)[0]
-    form =UserProfileForm({'picture':userprofile.picture })
+    form =UserProfileForm({'picture':userprofile.picture, 'Bio': userprofile.bio })
 
     if request.method =='POST':
         form = UserProfileForm(request.POST, request.FILES, instance=userprofile)

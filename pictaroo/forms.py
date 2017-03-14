@@ -18,24 +18,15 @@ class CategoryForm(forms.ModelForm):
 class ImageForm(forms.ModelForm):
     title = forms.CharField(max_length=128,
                             help_text="Please enter the title of the Image.")
-    url= forms.URLField(max_length=200,
-                        help_text="Please enter the URL of the image.")
+
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
-    #This method is called upon before saving form data to a new model instance and thus
-    #provides us with a logical place to insert code which can verify and even fix any form data the user inputs
-    def clean(self):
-        cleaned_data= self.cleaned_data
-        url = cleaned_data.get('url')
+    #will remove this
+    def image_tag(self):
+        return u'<img src="%s" />'
 
-        #if url is not empty and doesnt start with http://
-        #then prepend 'http://'
-        if url and not url.startswith('http://'):
-            url = 'http://' + url
-            cleaned_data['url']=url
-
-            return cleaned_data
-
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
 
     class Meta:
             #Provide an association between the ModelForm and a model
@@ -53,9 +44,8 @@ class ImageForm(forms.ModelForm):
 
 #Chapter 14 - Creating the User Profile Form class
 class UserProfileForm(forms.ModelForm):
-    website = forms.URLField(required=False)
     picture = forms.ImageField(required=False)
-
+    bio = forms.Textarea()
 
     class Meta:
         model = UserProfile

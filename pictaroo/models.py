@@ -26,8 +26,8 @@ class Category(models.Model):
 class Image(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=128)
-    url = models.URLField()
     views = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='images', blank=True)
 
     def __str__(self):
         return self.title
@@ -36,9 +36,9 @@ class Image(models.Model):
 class UserProfile(models.Model):
 #This line is required. Links UserProfile to a User Model Instance
     user = models.OneToOneField(User)
-    website = models.URLField(blank=True)
-    picture = models.ImageField(upload_to='profile_images', blank=True)
 
+    picture = models.ImageField(upload_to='profile_images', blank=True)
+    bio = models.TextField(default='', blank=True)
     #Override the __unicode__() method to return out something meaningful
 
     def __str__(self):

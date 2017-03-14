@@ -4,7 +4,8 @@ from pictaroo.models import UserProfile
 
 
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'url')
+    list_display = ('title', 'category', 'image')
+
 
 
 class CategoryAdmin(admin.ModelAdmin):

@@ -5,6 +5,16 @@
     <title>Title</title>
 </head>
 <body>
+    <div>
+         <h1>{{ selecteduser.username }} Favourites </h1>
+
+        {% if userprofile.picture %}
+        <img src="{{ MEDIA_URL }}{{ userprofile.picture }}" width ="100" height="100"  alt="{{ selecteduser.username }}" />
+        {% else %}
+        <img src="{{ MEDIA_URL }}avatar.jpg" img= width="100" height="100" alt="http://www.synbio.cam.ac.uk/images/avatar-generic.jpg" />
+        {% endif %}
+
+    </div>
 
 </body>
 </html>

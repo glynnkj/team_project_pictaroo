@@ -8,8 +8,9 @@
 
         {% if userprofile.picture %}
         <img src="{{ MEDIA_URL }}{{ userprofile.picture }}" width ="100" height="100"  alt="{{ selecteduser.username }}" />
+
         {% else %}
-        <img src="https://goo.gl/images/QxjACh/" img= width="100" height="100" alt="{{user.username}}" />
+        <img src="{{ MEDIA_URL }}avatar.jpg" img= width="100" height="100" alt="http://www.synbio.cam.ac.uk/images/avatar-generic.jpg" />
         {% endif %}
 
         <br/><br/>
@@ -18,6 +19,7 @@
 
             <div id="profile_data">
                 {% if selecteduser.username == user.username %}
+                    <form>{{ userprofile.bio }}</form>
 
             <form method = "post" action = "." enctype ="multipart/form-data">
                     {% csrf_token %}
