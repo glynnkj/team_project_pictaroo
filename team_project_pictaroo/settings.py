@@ -42,9 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pictaroo',
-    'registration', #add in the registration package Chapter 11
 
+    'social_django',  # social media integration
+
+    'pictaroo',
+
+    'registration', #add in the registration package Chapter 11
 ]
 
 MIDDLEWARE = [
@@ -55,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'social_django.middleware.SocialAuthExceptionMiddleware', #SocialAuthExceptionMiddleware
 ]
 
 ROOT_URLCONF = 'team_project_pictaroo.urls'
@@ -72,6 +77,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
+
 
             ],
         },
@@ -110,6 +119,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_TWITTER_KEY = 'qTdKxktHznMGWBK8c60iik6ao'
+SOCIAL_AUTH_TWITTER_SECRET = '2erSGE3eWV3DozBub8cCa8j88mm8CvYsnoqQbQOeA7DAh8SR72'
+
+SOCIAL_AUTH_FACEBOOK_KEY= '1222669894518643' #App ID
+SOCIAL_AUTH_FACEBOOK_SECRET= 'f4e8ef93f3ae3af19ddbfdf8722d255b' #app secret
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -133,8 +154,6 @@ MEDIA_URL = '/media/'
 
 # Static files (CSS, JavaScript, Images)
 STATICFILES_DIRS = [STATIC_DIR, ]
-
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = '/static/'
 
 # If True, users can register
@@ -146,7 +165,12 @@ REGISTRATION_AUTO_LOGIN = True
 # The page you want users to arrive at after they successfully log in
 #REVISIT THIS ---> NEED TO REDIRECT TO THE PROFILE PAGE.
 LOGIN_REDIRECT_URL = '/pictaroo/'
-
 # The page users are directed to if they are not logged in,
 # and are trying to access pages requiring authentication
 LOGIN_URL = '/accounts/login/'
+
+SOCIAL_AUTH_TWITTER_KEY = 'qTdKxktHznMGWBK8c60iik6ao'
+SOCIAL_AUTH_TWITTER_SECRET = '2erSGE3eWV3DozBub8cCa8j88mm8CvYsnoqQbQOeA7DAh8SR72'
+
+SOCIAL_AUTH_FACEBOOK_KEY= '1222669894518643' #App ID
+SOCIAL_AUTH_FACEBOOK_SECRET= 'f4e8ef93f3ae3af19ddbfdf8722d255b' #app secret

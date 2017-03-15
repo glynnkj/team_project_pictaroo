@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from pictaroo import views
+from django.conf.urls import include
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -17,9 +18,12 @@ urlpatterns = [
 
     url(r'^my_uploads/', views.my_uploads, name='my_uploads'),
 
+    url(r'^my_friends/', views.my_friends, name='my_friends'),
+
     url(r'^register_profile/$', views.register_profile, name='profile'),
 
     url(r'^my_account/(?P<username>[\w\-]+)/$', views.my_account, name='my_account'),
+
 
 
 ]

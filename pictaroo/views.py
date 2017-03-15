@@ -196,6 +196,10 @@ def my_favourites(request):
 def my_uploads(request):
     return render(request, 'pictaroo/myuploads.html')
 
+@login_required
+def my_friends(request):
+    return render(request, 'pictaroo/friends.html')
+
 
 # Chapter 14 Make Rango Tango - Create a Profile Registration view, corresponding view to handle the processing
 # of a UserProfileForm. the subsequent creation of a new UserProfile instance and instructing Django to

@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Uploads</title>
-</head>
-<body>
+{% extends "pictaroo/base.html" %}
+{% load staticfiles %}
+
+{% block title %}{{ selecteduser.username }} Comments {% endblock %}
+
+{% block body_block %}
     <div>
          <h1>{{ selecteduser.username }} Uploads</h1>
 
-        {% if userprofile.picture %}
-        <img src="{{ MEDIA_URL }}{{ userprofile.picture }}" width ="100" height="100"  alt="{{ selecteduser.username }}" />
-        {% else %}
-        <img src="{{ MEDIA_URL }}avatar.jpg" img= width="100" height="100" alt="http://www.synbio.cam.ac.uk/images/avatar-generic.jpg" />
-        {% endif %}
+        <a href="{% url 'my_account' user.username %}">Account</a>
+
+        <a href='/pictaroo/my_comments/'>Comments</a>
+
+        <a href='/pictaroo/my_favourites/'>Favourites</a>
+
+        <a href='/pictaroo/my_friends/'>Friends</a>
 
         <p>Collection of Uploads</p>
     </div>
-</body>
-</html>
+{% endblock %}

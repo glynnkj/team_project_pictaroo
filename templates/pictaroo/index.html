@@ -15,18 +15,25 @@
             <br />
             Password: <input type="password" name="password" value="" size="50" />
             <br />
-            <input type="submit" value="submit" />
+            <input type="submit" value="Sign In" />
+            </form>
+                <p><strong>-- Sign In with Social Media --</strong></p>
+                <a href="{% url 'social:begin' 'twitter' %}">
+                    <img src="{{ MEDIA_URL }}twitter-logo.jpg"img= width="75" height="75" alt='Twitter Logo'>
+                </a>
+                <a href="{% url 'social:begin' 'facebook' %}">
+                    <img src="{{ MEDIA_URL }} facebook-logo.jpg" img= width="85" height="85" alt='Facebook Logo'>
+                </a>
 
-            <p>--- OR --- </p>
-
-
-                Register your account <a href="{% url 'registration_register' %}">Click Here!</a>
+                <p><strong>-- OR -- </strong></p>
+                 <a href="{% url 'registration_register' %}">Sign Up</a>
             {% endif %}
 
         <div>
             <div>
                 <h3>Trending Categories</h3>
             </div>
+
             {% if categories %}
         <ul>
             {% for category in categories %}
@@ -35,12 +42,12 @@
             </li>
             {% endfor %}
         </ul>
-        {% else %}
+            {% else %}
             <strong> There are no categories present. </strong>
-        {% endif %}
+            {% endif %}
         </div>
 
-        <div>
+
              <h3>Trending Images</h3>
             {% if image %}
                 <ul>
@@ -54,8 +61,6 @@
                 <strong>No Images currently in category. </strong>
             {% endif %}
 
-        <br />
-
-
+        <br/>
         </div>
 {% endblock %}

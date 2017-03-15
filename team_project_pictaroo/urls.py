@@ -19,7 +19,9 @@ from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 from pictaroo import views
+
 from registration.backends.simple.views import RegistrationView
+
 
 #Create a new class that redirects the user to the index page
 # if successful at logging
@@ -39,5 +41,7 @@ urlpatterns = [
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
 
     url(r'^accounts/', include('registration.backends.simple.urls')),
+
+    url(r'^oauth/', include('social_django.urls', namespace='social')), # social media intergration URLs
 
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
