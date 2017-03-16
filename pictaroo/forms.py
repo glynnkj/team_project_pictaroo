@@ -1,6 +1,6 @@
 
 from django import forms
-from pictaroo.models import Image, Category, UserProfile
+from pictaroo.models import Image, Category, UserProfile, Comment
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length =128,
@@ -9,7 +9,7 @@ class CategoryForm(forms.ModelForm):
 
     #An inline class to provide additional information on the form
     class Meta:
-        #provide an association between the ModelForm andn a model
+        #provide an association between the ModelForm and a model
         model = Category
         fields = ('name',)
 
@@ -33,7 +33,6 @@ class ImageForm(forms.ModelForm):
 
 
 
-
 #Chapter 14 - Creating the User Profile Form class
 class UserProfileForm(forms.ModelForm):
     picture = forms.ImageField(required=False)
@@ -42,3 +41,11 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ('user',)
+
+class CommentForm(forms.ModelForm):
+    author = forms.CharField(max_length =200, required=False)
+    text = forms.Textarea()
+
+    class Meta:
+        model = Comment
+        exclude = ('image', 'user',)

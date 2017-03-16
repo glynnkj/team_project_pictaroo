@@ -30,7 +30,7 @@ SECRET_KEY = 'w&m(pe-fwa=h24^2ipsd5jf9g815q^4h1j@6sbpgx1nh_(snie'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'2274979b.pythonanywhere.com']
+ALLOWED_HOSTS = [u'2274979b.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -165,6 +165,8 @@ REGISTRATION_AUTO_LOGIN = True
 # The page you want users to arrive at after they successfully log in
 #REVISIT THIS ---> NEED TO REDIRECT TO THE PROFILE PAGE.
 LOGIN_REDIRECT_URL = '/pictaroo/'
+
+
 # The page users are directed to if they are not logged in,
 # and are trying to access pages requiring authentication
 LOGIN_URL = '/accounts/login/'
