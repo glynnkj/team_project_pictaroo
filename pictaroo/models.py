@@ -34,7 +34,6 @@ class Image(models.Model):
 class UserProfile(models.Model):
 #This line is required. Links UserProfile to a User Model Instance
     user = models.OneToOneField(User)
-
     picture = models.ImageField(upload_to='profile_images', blank=True)
     bio = models.TextField(default='', blank=True)
     #Override the __unicode__() method to return out something meaningful
@@ -46,6 +45,7 @@ class UserProfile(models.Model):
 class Comment(models.Model):
     image = models.ForeignKey(Image)
     author = models.ForeignKey(UserProfile)
+
     text = models.TextField(default='', blank=True)
     likes = models.IntegerField(default=0)
 

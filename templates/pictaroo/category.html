@@ -14,9 +14,9 @@
                     <li>
                         <figure>
                             <img src={{ image.image.url }} alt='missing' />
-                            <figcaption>"{{ image.title }} likes: {{ image.likes }} views: {{ image.views }}"</figcaption>
+                            <figcaption>"{{ image.title }} likes: {{ image.likes }} views: {{ image.views }} <br/> {{ comment.author }} {{ comment.text }}"</figcaption>
                         </figure>
-                            <p>{{ comment.author }} {{ comment.text }}</p>
+
                     </li>
                 {% endfor %}
             </ul>
