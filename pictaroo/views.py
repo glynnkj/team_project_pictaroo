@@ -79,7 +79,7 @@ def about(request):
 
     return response
 
-#helper function to show the most liked images
+#helper function to sort images in a descending order based on the number of likes
 def sort_images(category):
     images = Image.objects.filter(category=category)
     likes = []
@@ -160,13 +160,13 @@ def add_image(request, category_name_slug):
 
     form = ImageForm()
     if request.method == 'POST':
-        form = ImageForm(request.POST)
+        form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             if category:
                 image = form.save(commit=False)
                 image.category = category
-                image.views= 0
                 image.save()
+
                 return show_category(request, category_name_slug)
             else:
                 print(form.errors)
