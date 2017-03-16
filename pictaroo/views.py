@@ -141,7 +141,7 @@ def add_category(request):
             # we could give a cofirmation mesage
             # but since the most recent category added is on the index page
             # then we can direct the user back to the index page
-            return index(request)
+            return HttpResponseRedirect('/pictaroo/')
         else:
             # the supplied form contained errors
             # just print them to the terminal
@@ -166,8 +166,7 @@ def add_image(request, category_name_slug):
                 image = form.save(commit=False)
                 image.category = category
                 image.save()
-
-                return show_category(request, category_name_slug)
+                return HttpResponseRedirect('/pictaroo/category/' + category_name_slug)
             else:
                 print(form.errors)
 
