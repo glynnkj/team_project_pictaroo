@@ -1,0 +1,82 @@
+#container {
+	width: 1200px;
+	margin: 100px auto;
+}
+
+.pageContainer{
+    float: left;
+    width: 1050px;
+}
+
+.categoryNavigator{
+    width: 800px; height: 30px;
+}
+
+.imagelist{
+    float: left;
+    width: 800px;  height: 250px;
+    overflow-y: scroll;
+}
+.imagecard {
+  width: 250px; height: 390px;
+  background: white;
+  margin: 5px;
+  float: left;
+
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
+     -moz-box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
+          box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
+}
+
+.login-container{
+width: 250px;
+}
+.social-login{
+width: 250px; height: 200px;
+
+}
+
+.categoryNavigator{
+    width: 800px; height: 30px;
+}
+
+#buttons li {
+    float: left;
+    list-style: none;
+    text-align: center;
+    background-color: #000000;
+    margin-right: 30px;
+    width: 150px;
+    line-height: 30px;
+}
+
+
+#buttons li a{
+    text-decoration: none;
+    color: #FFFFFF;
+    display: block;
+}
+
+#buttons li a:hover {
+    text-decoration: none;
+    color: #000000;
+    background-color: #33B5E5;
+}
+
+div.item {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+}
+img {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+}
+.caption {
+    display: block;
+}

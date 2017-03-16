@@ -1,0 +1,146 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+body {
+  padding-top: 70px;
+}
+footer {
+  padding: 30px 0;
+}
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+}
+
+/*
+ * Extra stuff added on
+ * --------------------------------------------------
+ */
+ 
+
+.imagecard {
+    width: 200px;
+    height: 300px;
+  background: white;
+  margin: 5px;
+  float: left;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
+     -moz-box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
+          box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
+}
+
+.logincard {
+
+  background: white;
+  margin: 5px;
+  float: left;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
+     -moz-box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
+          box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
+}
+
+.login-container{
+width: 250px;
+}
+.social-login{
+width: 250px; height: 200px;
+
+}
+
+div.item {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+}
+img {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+}
+.caption {
+    display: block;
+}
+
+.thingy {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.button {
+display: block;
+margin: auto;
+width: 40%;
+background: #4E9CAF;
+padding: 10px;
+text-align: center;
+border-radius: 5px;
+color: white;
+font-weight: bold;
+width: 80%;
+}
+
+.a {
+width: 80%;
+border: 0px solid red;
+background-color: #4E9CAF;
+padding: 10px;
+text-align: center;
+border-radius: 5px;
+color: white;
+font-weight: bold;
+}
+
+
