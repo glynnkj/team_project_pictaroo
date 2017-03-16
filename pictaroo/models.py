@@ -8,8 +8,6 @@ from django.contrib.auth.models import User
 #Both must inherit from the Model base class,
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
-    views = models.IntegerField(default=0)
-    likes = models.IntegerField(default=0)
     slug = models.SlugField(unique = True)
 
     def save(self, *args, **kwargs):
@@ -27,6 +25,7 @@ class Image(models.Model):
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=128)
     views = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
     image = models.ImageField(upload_to='images', blank=True)
 
     def __str__(self):

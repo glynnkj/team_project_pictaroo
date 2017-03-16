@@ -19,7 +19,8 @@ class ImageForm(forms.ModelForm):
     title = forms.CharField(max_length=128,
                             help_text="Please enter the title of the Image.")
 
-    views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    #views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    image = forms.ImageField(required=True)
 
     #will remove this
     def image_tag(self):

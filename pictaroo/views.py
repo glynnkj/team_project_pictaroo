@@ -79,6 +79,17 @@ def about(request):
 
     return response
 
+#helper function to show the most liked images
+def sort_images(category):
+    images = Image.objects.filter(category=category)
+    likes = []
+    for image in images:
+        likes.append(image.likes)
+    sorted_images = []
+    for index in sorted(range(len(likes)), key=lambda x:likes[x], reverse=True):
+        sorted_images.append(images[index])
+    return sorted_images
+
 def show_category(request, category_name_slug):
     #create a context dictionary which we can pass
     #to the template rendering engine
@@ -92,7 +103,9 @@ def show_category(request, category_name_slug):
 
         #Retrieve all of the associated images
         #note that filter() will return a list of image objects or an empty list
-        images = Image.objects.filter(category=category)
+
+        images = sort_images(category)
+        #images = Image.objects.filter(category=category)
 
         #add our results list to the template context under name images
         context_dict['images'] = images
@@ -138,6 +151,7 @@ def add_category(request):
         # render the form with error message (if any)
     return render(request, 'pictaroo/add_category.html', {'form': form})
 
+@login_required
 def add_image(request, category_name_slug):
     try:
         category = Category.objects.get(slug=category_name_slug)
