@@ -31,7 +31,6 @@ class Image(models.Model):
     def __str__(self):
         return self.title
 
-
 class UserProfile(models.Model):
 #This line is required. Links UserProfile to a User Model Instance
     user = models.OneToOneField(User)
@@ -42,3 +41,14 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Comment(models.Model):
+    image = models.ForeignKey(Image)
+    author = models.ForeignKey(UserProfile)
+    text = models.TextField(default='', blank=True)
+    likes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.text
+
