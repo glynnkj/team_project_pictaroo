@@ -164,6 +164,7 @@ def add_image(request, category_name_slug):
         if form.is_valid():
             if category:
                 image = form.save(commit=False)
+                image.author = UserProfile.objects.get_or_create(user=request.user)[0]
                 image.category = category
                 image.save()
                 return HttpResponseRedirect('/pictaroo/category/' + category_name_slug)
