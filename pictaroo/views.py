@@ -240,3 +240,27 @@ def register_profile(request):
     context_dict = {'form':form}
 
     return render(request, 'pictaroo/profile_registration.html', context_dict)
+
+
+def find(request):
+    def get_list(max_results=0, starts_with=''):
+        list = []
+        if starts_with:
+            list = Category.objects.filter(name__istartswith=starts_with)
+            list = Image.objects.filter(name__istartswith=starts_with)
+            list = UserProfile.objects.filter(name__istartswith=starts_with)
+
+        if max_results > 0:
+            if len(list) > max_results:
+                list = list[:max_results]
+        return list
+
+
+    list = []
+    starts_with = ''
+
+    if request.method == 'GET':
+        starts_with = request.GET['suggestion']
+    list = get_list(10, starts_with)
+
+    return render(request, 'rango/cats.html', {'lists': list})

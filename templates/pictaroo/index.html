@@ -189,7 +189,35 @@
 		<div class="logincard">
 
 				{% if user.is_authenticated %}
-					Welcome Back {{ user.username }}!
+					
+					<div class="dropdown">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        Welcome Back {{ user.username }}!
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="">Add a new category</a></li>
+                            <li><a href="">Change my profile</a></li>
+                            <li><a href="">Log out</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <br />
+                        Search your enjoy category
+                        <ul class="nav nav-list flex-column">
+                        <form>
+                            <li class="nav-item">
+                                <input class="search-query form-control" type="text"
+                                       name="find" value="" id="find" />
+                            </li>
+                        </form>
+                        </ul>
+                    </div>
 					
 				{% else %}				
 				
