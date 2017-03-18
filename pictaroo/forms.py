@@ -13,10 +13,21 @@ class CategoryForm(forms.ModelForm):
         model = Category
         fields = ('name',)
 
+
+#Chapter 14 - Creating the User Profile Form class
+class UserProfileForm(forms.ModelForm):
+    picture = forms.ImageField(required=False)
+    bio = forms.Textarea()
+
+    class Meta:
+        model = UserProfile
+        exclude = ('user',)
+
 class ImageForm(forms.ModelForm):
     title = forms.CharField(max_length=128,
                             help_text="Please enter the title of the Image.")
     image = forms.ImageField(required=True)
+
 
     class Meta:
             #Provide an association between the ModelForm and a model
@@ -31,16 +42,6 @@ class ImageForm(forms.ModelForm):
             # or specify the fields to include (i.e. not include the category field)
             fields = ('title', 'image',)
 
-
-
-#Chapter 14 - Creating the User Profile Form class
-class UserProfileForm(forms.ModelForm):
-    picture = forms.ImageField(required=False)
-    bio = forms.Textarea()
-
-    class Meta:
-        model = UserProfile
-        exclude = ('user',)
 
 class CommentForm(forms.ModelForm):
     author = forms.CharField(max_length =200, required=False)

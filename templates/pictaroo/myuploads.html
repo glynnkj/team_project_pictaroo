@@ -15,6 +15,25 @@
 
         <a href='/pictaroo/my_friends/'>Friends</a>
 
-        <p>Collection of Uploads</p>
+        <p><strong>Collection of Uploads</strong></p>
+
+        {% if images %}
+            <ul>
+                {% for image in images %}
+                    <li>
+                        <figure>
+                            <img src={{ user.image.url }} alt='missing' />
+                            <figcaption>
+                                "{{ image.title }} likes: {{ image.likes }} views: {{ image.views }}"
+                            </figcaption>
+                        </figure>
+
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong> you have yet to share your favourites images </strong>
+        {% endif %}
+
     </div>
 {% endblock %}

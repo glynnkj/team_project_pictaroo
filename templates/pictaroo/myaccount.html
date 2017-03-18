@@ -22,21 +22,18 @@
             <img src="{{ MEDIA_URL }}avatar.jpg" img= width="100" height="100" alt="http://www.synbio.cam.ac.uk/images/avatar-generic.jpg" />
         {% endif %}
 
+        <form>{{ userprofile.bio }}</form>
+        <input type="submit" name="Update" value="Update" />
 
             <div>
-            <form>{{ userprofile.bio }}</form>
             <div id="profile_data">
                 {% if selecteduser.username == user.username %}
             <form method = "post" action = "." enctype ="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <input type="submit" value="Update Profile" />
+                     <input type="submit" name="submit" value="Update Profile" />
             </form>
             </div>
-        <div id="edit_profile"></div>
-        {% endif%}
-
-
-
-             </div>
+                {% endif%}
+            </div>
 {% endblock %}

@@ -4,6 +4,7 @@
 {% block title %}{{ selecteduser.username }} Comments {% endblock %}
 
 {% block body_block %}
+    <div>
          <h1>{{ selecteduser.username }} Comments</h1>
 
         <a href="{% url 'my_account' user.username %}">Account</a>
@@ -14,26 +15,20 @@
 
         <a href='/pictaroo/my_friends/'>Friends</a>
 
+    </div>
+    <div>
+    {% for comment in comments %}
 
-            <table>
-                <tr>
-                <th>
-                    <h2>Comments</h2>
-                </th>
-                <th>
-                    <h2>Image</h2>
-                </th>
-                </tr>
-                <tr>
-                    <td>
-                       {{ user.comment.text }}
-                    </td>
-                    <td>
-                        <img src="{{ MEDIA_URL }}facebook-logo.jpg" img= width="100" height="100">
-                    </td>
-                </tr>
-                </tr>
-            </table>
+        {% if comment.author.user == user %}
+            {{ comment.text }}
+            <img src= {{ comment.image.image.url }} alt='missing' /><br/>
+        {% else %}
+            <strong>{{ user.username }} has yet to comment on any pictures</strong>
+            Author : {{ comment.author }}
+            {{ comment.text }}
+            User : {{ user }}
+        {% endif %}
+    {% endfor %}
     </div>
 
 {% endblock %}

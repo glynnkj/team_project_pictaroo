@@ -143,14 +143,8 @@
 
 				{% if user.is_authenticated %}
 					Welcome Back {{ user.username }}!
-
-
-
-
 				{% else %}
 
-				
-				
 				<form id="login_form" method="post" action="{% url 'auth_login' %}">
 				{% csrf_token %}
 				
