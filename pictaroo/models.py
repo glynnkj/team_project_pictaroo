@@ -45,6 +45,7 @@ class Image(models.Model):
     def __str__(self):
         return self.title
 
+
 class Comment(models.Model):
     date = models.DateTimeField(default=timezone.now(), unique=True)
     image = models.ForeignKey(Image)
