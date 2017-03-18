@@ -17,23 +17,15 @@
 
         <p><strong>Collection of Uploads</strong></p>
 
-        {% if images %}
-            <ul>
-                {% for image in images %}
-                    <li>
-                        <figure>
-                            <img src={{ user.image.url }} alt='missing' />
-                            <figcaption>
-                                "{{ image.title }} likes: {{ image.likes }} views: {{ image.views }}"
-                            </figcaption>
-                        </figure>
+        {% for image in images %}
+        {% if images.author.user == user %}
 
-                    </li>
-                {% endfor %}
-            </ul>
+
+            {{ comment.text }}
+            <img src= {{ comment.image.image.url }} alt='missing' /><br/>
         {% else %}
-            <strong> you have yet to share your favourites images </strong>
+             <strong> you have yet to share your favourites images </strong>
         {% endif %}
-
+    {% endfor %}
     </div>
 {% endblock %}
