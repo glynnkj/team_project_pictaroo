@@ -21,17 +21,6 @@ class Category(models.Model):
         return self.name
 
 
-class Image(models.Model):
-    category = models.ForeignKey(Category)
-    title = models.CharField(max_length=128)
-    views = models.IntegerField(default=0)
-    likes = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='images', blank=True)
-
-    def __str__(self):
-        return self.title
-
-
 class UserProfile(models.Model):
 #This line is required. Links UserProfile to a User Model Instance
     user = models.OneToOneField(User)
@@ -43,6 +32,16 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+class Image(models.Model):
+    category = models.ForeignKey(Category)
+
+    title = models.CharField(max_length=128)
+    views = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='images', blank=True)
+
+    def __str__(self):
+        return self.title
 
 class Comment(models.Model):
     image = models.ForeignKey(Image)

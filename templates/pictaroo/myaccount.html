@@ -22,9 +22,11 @@
             <img src="{{ MEDIA_URL }}avatar.jpg" img= width="100" height="100" alt="http://www.synbio.cam.ac.uk/images/avatar-generic.jpg" />
         {% endif %}
 
-        <form>{{ userprofile.bio }}</form>
-        <input type="submit" name="Update" value="Update" />
 
+
+        <input type="submit" name="Make Changes" value="Make Changes" />
+
+        {% if input == 'Make Changes' %}
             <div>
             <div id="profile_data">
                 {% if selecteduser.username == user.username %}
@@ -35,5 +37,8 @@
             </form>
             </div>
                 {% endif%}
+        {% else %}
+            <form>{{ userprofile.bio }}</form>
+        {% endif %}
             </div>
 {% endblock %}
