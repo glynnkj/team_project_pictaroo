@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 #Create two classes - one class representing each model.
@@ -21,17 +22,6 @@ class Category(models.Model):
         return self.name
 
 
-class Image(models.Model):
-    category = models.ForeignKey(Category)
-    title = models.CharField(max_length=128)
-    views = models.IntegerField(default=0)
-    likes = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='images', blank=True)
-
-    def __str__(self):
-        return self.title
-
-
 class UserProfile(models.Model):
 #This line is required. Links UserProfile to a User Model Instance
     user = models.OneToOneField(User)
@@ -44,7 +34,19 @@ class UserProfile(models.Model):
         return self.user.username
 
 
+class Image(models.Model):
+    category = models.ForeignKey(Category)
+    author = models.ForeignKey(UserProfile)
+    title = models.CharField(max_length=128)
+    views = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='images', blank=True)
+
+    def __str__(self):
+        return self.title
+
 class Comment(models.Model):
+    date = models.DateTimeField(default=timezone.now(), unique=True)
     image = models.ForeignKey(Image)
     author = models.ForeignKey(UserProfile)
 
