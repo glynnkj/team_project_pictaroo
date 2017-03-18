@@ -7,8 +7,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 
 #Import the category model
-from pictaroo.models import Category, Image, UserProfile
-from pictaroo.forms import CategoryForm, ImageForm, UserProfileForm
+from pictaroo.models import Category, Image, UserProfile, Comment
+from pictaroo.forms import CategoryForm, ImageForm, UserProfileForm, CommentForm
 from datetime import datetime
 
 #geez dem cookies
@@ -199,7 +199,13 @@ def my_account(request, username):
 
 @login_required
 def my_comments(request):
-    return render(request, 'pictaroo/mycomments.html')
+
+#    form = CommentForm({'author': Comment.author, 'text': Comment.text })
+
+    comment_list = Comment.objects.order_by('-likes')[:5]
+    context_dict = {'comments': comment_list}
+
+    return render(request, 'pictaroo/mycomments.html', context_dict)
 
 @login_required
 def my_favourites(request):
