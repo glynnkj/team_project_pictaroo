@@ -15,17 +15,19 @@
 
         <a href='/pictaroo/my_friends/'>Friends</a>
 
-        <p><strong>Collection of Uploads</strong></p>
-
-        {% for image in images %}
-        {% if images.author.user == user %}
-
-
-            {{ comment.text }}
-            <img src= {{ comment.image.image.url }} alt='missing' /><br/>
-        {% else %}
-             <strong> you have yet to share your favourites images </strong>
-        {% endif %}
-    {% endfor %}
     </div>
+    <div>
+
+    {% if images|length != 0 %}
+            {% for image in images %}
+                    {{ image.title }}
+                <a href="/pictaroo/category/{{ image.category.slug }}">
+                    <img src= {{ image.image.url }}  width="300" height="300" alt='missing' /><br/>
+                </a>
+            {% endfor %}
+    {% else %}
+            <br/>{{ user.username }} you have yet to upload any pictarooos!
+    {% endif %}
+    </div>
+
 {% endblock %}

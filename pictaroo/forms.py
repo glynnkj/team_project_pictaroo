@@ -3,8 +3,8 @@ from django import forms
 from pictaroo.models import Image, Category, UserProfile, Comment
 
 class CategoryForm(forms.ModelForm):
-    name = forms.CharField(max_length =128,
-                           help_text="Please enter the category name.")
+
+    name = forms.CharField(max_length=128, help_text="Please enter the category name.")
     slug = forms.CharField(widget=forms.HiddenInput, required=False)
 
     #An inline class to provide additional information on the form

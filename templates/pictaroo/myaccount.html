@@ -4,6 +4,7 @@
 {% block title %}{{ selecteduser.username }} Profile{% endblock %}
 
 {% block body_block %}
+    <div>
         <h1>{{ selecteduser.username }} Profile</h1>
 
          <a href='/pictaroo/my_comments/'>Comments</a>
@@ -22,23 +23,27 @@
             <img src="{{ MEDIA_URL }}avatar.jpg" img= width="100" height="100" alt="http://www.synbio.cam.ac.uk/images/avatar-generic.jpg" />
         {% endif %}
 
-
-
-        <input type="submit" name="Make Changes" value="Make Changes" />
-
-        {% if input == 'Make Changes' %}
-            <div>
-            <div id="profile_data">
-                {% if selecteduser.username == user.username %}
-            <form method = "post" action = "." enctype ="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form.as_p }}
+        <div class="modal fade" id="popUpWindow-signup">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+					Change Profile Settings:
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div id="profile_data">
+                        <form method = "post" action = "." enctype ="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
                      <input type="submit" name="submit" value="Update Profile" />
-            </form>
-            </div>
-                {% endif%}
-        {% else %}
-            <form>{{ userprofile.bio }}</form>
-        {% endif %}
-            </div>
+                    </form>
+                    </div>
+				</div>
+			</div>
+		</div>
+
+
+        <button type="button" class = "a"  data-toggle="modal" data-target="#popUpWindow-signup">Settings</button>
+
+        <form>{{ userprofile.bio }}</form>
+    </div>
 {% endblock %}

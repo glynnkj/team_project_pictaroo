@@ -17,14 +17,15 @@
 
     </div>
     <div>
-    {% for comment in comments %}
-        {% if comment.author.user == user %}
-            {{ comment.text }}
-            <img src= {{ comment.image.image.url }} alt='missing' /><br/>
+        {% if comments|length != 0 %}
+            {% for comment in comments %}
+                    {{ comment.text }}
+                <a href="/pictaroo/category/{{ comment.image.category.slug }}">
+                    <img src= {{ comment.image.image.url }}  width="300" height="300" alt='missing' /><br/>
+                </a>
+            {% endfor %}
         {% else %}
-            <strong>{{ user.username }} has yet to comment on any pictures</strong>
+            <br/>{{ user.username }} has yet to comment on any pictures
         {% endif %}
-    {% endfor %}
     </div>
-
 {% endblock %}

@@ -13,12 +13,16 @@
                 {% for image in images %}
                     <li>
                         <figure>
-                            <img src={{ image.image.url }} alt='missing' />
+                            <img src="{{ image.image.url }}" width="300" height="300" alt='missing' />
                             <figcaption>
                                 "{{ image.title }} likes: {{ image.likes }} views: {{ image.views }}
                                 <br/>
                                 {{ comment.author }} {{ comment.text }}"
                             </figcaption>
+                            <form action="action_page">
+                            <input type="text" name="Suggestion" style="width:545px; height:50px"><br/>
+                            <input type="submit" value="Submit">
+                            </form>
                         </figure>
 
                     </li>
