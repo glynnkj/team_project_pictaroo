@@ -53,6 +53,8 @@
 
     <div class="container">
 	
+	
+	<!-- User registration modal -->	
 	<div class="modal fade" id="popUpWindow-signup">
 			<div class="modal-dialog">
 				<div class="modal-content"> 
@@ -102,17 +104,12 @@
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
 
-		  
-		
 			<div class="btn-group btn-group-justified">
 				<a href="#" class="btn btn-primary">Most Liked</a>
 				<a href="#" class="btn btn-primary">Memes</a>
 				<a href="#" class="btn btn-primary">Funny</a>
 			</div>
 		
-		  
-		  
-		  
           <div class="row">
 		  
             <div class="col-xs-6 col-lg-4">
@@ -132,17 +129,6 @@
 					<topcomment>Top comment here </topcomment>
 				
 				</div>
-				<button type='button' id='edit_foo' class='buttons'>push me</button>
-
-<div class="modal fade" id="foo_modal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">Server Side Modal Popup Demo</div>
-            <div class="modal-body"></div>
-            <div class="modal-footer"></div>
-        </div>
-    </div>
-</div>
             </div><!--/.col-xs-6.col-lg-4-->
 			
 			<div class="col-xs-6 col-lg-4">
@@ -190,7 +176,7 @@
 		<div class="logincard">
 
 				{% if user.is_authenticated %}
-					
+			
 					<div class="dropdown">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         Welcome Back {{ user.username }}!
@@ -289,17 +275,33 @@
 
     </div><!--/.container-->
 	
-	<!-- The Modal -->
+	<!-- Image popup modal -->
 
 <div id="imageModal" class="modal1">
 	<div class="imagecard-large">
-  <!-- The Close Button -->
-  <span class="close" onclick="document.getElementById('imageModal').style.display='none'">&times;</span>
-  <!-- Modal Content (The Image) -->
-  
-  <img class="modal-content" id="img01">
-  <button class="button" id="like" >Like</button>
-  <button class="button" id="share" >Share</button>
+		<span class="close" onclick="document.getElementById('imageModal').style.display='none'">&times;</span>
+		<img class="modal-content" id="img01">
+		<br />
+		<div align="center">
+			<button class="button-popup" id="like" >Like</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button class="button-popup" id="share" >Share</button>
+			<br />
+			<br />
+			<div class="comment-input">
+				<form method='post'>
+					<textarea name='comment' id='comment' placeholder="Enter a comment"></textarea><br />
+					<br />
+					<input type='submit' class="button-popup" value='Comment' />  
+				</form>
+			</div>
+		</div>
+		<br />
+		<p>2 Comments--------------------------------------------------------------------------------</p>
+		<br/>
+			<p> This post gave me aids</p>
+			<p> Wow so funny</p>
+
   </div>
 </div>
 

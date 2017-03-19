@@ -156,6 +156,7 @@ font-weight: bold;
 }
 
 #myImg:hover {opacity: 0.7;}
+
 /* The Modal (background) */
 .modal1 {
     display: none; /* Hidden by default */
@@ -176,10 +177,12 @@ font-weight: bold;
 .imagecard-large {
     width: 500px;
     height: 700px;
-  background: white;
+  background:white;
 	margin-left: auto;
     margin-right: auto;
     width: 6em
+	 max-height: calc(100vh - 210px);
+    overflow-y: auto;
   position: center;
   -webkit-border-radius: 10px;
      -moz-border-radius: 10px;
@@ -187,15 +190,23 @@ font-weight: bold;
   -webkit-box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
      -moz-box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
           box-shadow: 2px 2px 9px rgba(0,0,0,0.3);
+
 }
 
+.comment-card{
+
+  background: black;
+	margin-left: auto;
+    margin-right: auto;
+}
 
 .modal-content {
     margin: auto;
     display: block;
     width: 80%;
-    max-width: 300px;
-	max-height: 700px;
+	height: 70%;
+    max-width: 500px;
+	max-height: 1500px;
 }
 
 /* Comments of Modal Image */
@@ -218,6 +229,15 @@ font-weight: bold;
     animation-duration: 0.6s;
 }
 
+textarea{
+    height: 100%;
+    width: 100%;
+   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+	 resize: none;
+}
+
 .modalclose{
     margin: auto;
     display: block;
@@ -227,6 +247,17 @@ font-weight: bold;
     color: #ccc;
     padding: 10px 0;
     height: 150px;
+}
+
+.button-popup {
+width: 25%;
+border: 0px solid red;
+background-color: #4E9CAF;
+padding: 10px;
+text-align: center;
+border-radius: 5px;
+color: white;
+font-weight: bold;
 }
 
 @-webkit-keyframes zoom {
