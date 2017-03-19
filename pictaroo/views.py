@@ -164,6 +164,7 @@ def add_image(request, category_name_slug):
         if form.is_valid():
             if category:
                 image = form.save(commit=False)
+                image.author = UserProfile.objects.get_or_create(user=request.user)[0]
                 image.category = category
                 image.save()
                 return HttpResponseRedirect('/pictaroo/category/' + category_name_slug)
@@ -200,9 +201,10 @@ def my_account(request, username):
 @login_required
 def my_comments(request):
 
-#    form = CommentForm({'author': Comment.author, 'text': Comment.text })
+    #form = CommentForm({'author': Comment.author, 'text': Comment.text })
 
-    comment_list = Comment.objects.order_by('-likes')[:5]
+    comment_list = Comment.objects.filter(author=UserProfile.objects.get(user=request.user))
+    print(comment_list)
     context_dict = {'comments': comment_list}
 
     return render(request, 'pictaroo/mycomments.html', context_dict)
@@ -213,7 +215,11 @@ def my_favourites(request):
 
 @login_required
 def my_uploads(request):
-    return render(request, 'pictaroo/myuploads.html')
+
+    image_list = Image.objects.filter(author=UserProfile.objects.get(user=request.user))
+    context_dict = {'images': image_list}
+
+    return render(request, 'pictaroo/myuploads.html', context_dict)
 
 @login_required
 def my_friends(request):

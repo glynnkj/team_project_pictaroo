@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block body_block %}
+
 <div>
     {% if category %}
     <h1>Add a Image to {{category.name}}</h1>
@@ -20,8 +21,6 @@
                     {{ field.help_text }}
                     {{ field }}
                 {% endfor %}
-
-
                 <input type="submit" name="submit" value="Add new Image" />
 
         </form>
