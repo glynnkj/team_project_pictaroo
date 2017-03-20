@@ -217,7 +217,7 @@
 
             <strong id="image_like_count">{{ image.likes }}</strong>
             {% if user.is_authenticated %}
-			    <button id="likes" class="btn btn-primary btn-sm" data-imageid=""{{ image.id }} >Like</button>
+			    <button id="likes" class="btn btn-primary btn-lg" data-imageid=""{{ image.id }} >Like</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			    <button class="button-popup" id="share" >Share</button>
 
@@ -251,7 +251,10 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="{% static "js/pictaroo-ajax.js" %}"></script>
+    <script src="{% static "js/pictaroo-jquery.js" %}"></script>
     <link rel="stylesheet" href="{% static 'css/offcanvas.css' %}">
+
 
 <script>
 // Get the modal

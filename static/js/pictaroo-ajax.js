@@ -9,7 +9,6 @@
             imageid = $(this).attr("data-imageid");
             $.get('/pictaroo/image_like/', {image_id: imageid}, function(data) {
                 $('#image_like_count').html(data);
-                $('#likes').hide();
 
             });
         });

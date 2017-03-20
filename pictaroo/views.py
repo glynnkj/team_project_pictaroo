@@ -287,3 +287,17 @@ def like_image(request):
             image.likes = likes
             image.save()
     return HttpResponse(likes)
+
+@login_required()
+def like_comment(request):
+    comment_id =None
+    if request.method == 'GET':
+        comment_id = request.GET['comment_id']
+    likes = 0
+    if comment_id:
+        comment = Image.objects.get(id=int(comment_id))
+        if comment:
+            likes = comment.likes+1
+            comment.likes = likes
+            comment.save()
+    return HttpResponse(likes)

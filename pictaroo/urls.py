@@ -28,4 +28,6 @@ urlpatterns = [
 
     url(r'^image_like/$', views.like_image, name='like_category'),
 
+    url(r'^comment_like/$', views.like_comment, name='like_comment'),
+
 ]
