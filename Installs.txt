@@ -1,1 +1,0 @@
-pip install -U django-registration-redux==1.4
