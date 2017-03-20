@@ -12,4 +12,14 @@
 
             });
         });
+
+         $('#likes_comments').click(function() {
+            var commentid;
+            commentid = $(this).attr("data-commentid");
+            $.get('/pictaroo/comment_like/', {comment_id: commentid}, function(data) {
+                $('#comment_like_count').html(data);
+                $('#likes_comments').hide();
+
+            });
+        });
     });

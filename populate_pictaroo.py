@@ -24,52 +24,52 @@ def populate ():
     for im in os.listdir(path+'/funny/'):
         #print path+'/funny/'+im
         #print im.split('.')[0]
-        views = random.randint(0, 150)
+        shares = random.randint(0, 150)
         funny_images.append({
             "title": im.split('.')[0],
             "author": user_profiles[random.randint(0, len(user_profiles)-1)],
             "image": path+'/funny/'+im,
-            "views": views,
-            "likes": random.randint(0, views),
+            "shares": shares,
+            "likes": random.randint(0, shares),
             })
 
     politics_images = []
     for im in os.listdir(path+'/politics/'):
         #print path+'/politics/'+im
         #print im.split('.')[0]
-        views = random.randint(0, 150)
+        shares = random.randint(0, 150)
         politics_images.append({
             "title": im.split('.')[0],
             "author": user_profiles[random.randint(0, len(user_profiles)-1)],
             "image": path+'/politics/'+im,
-            "views": views,
-            "likes": random.randint(0, views),
+            "shares": shares,
+            "likes": random.randint(0, shares),
             })
 
     food_images = []
     for im in os.listdir(path+'/food/'):
         #print path+'/food/'+im
         #print im.split('.')[0]
-        views = random.randint(0, 150)
+        shares = random.randint(0, 150)
         food_images.append({
             "title": im.split('.')[0],
             "author": user_profiles[random.randint(0, len(user_profiles)-1)],
             "image": path+'/food/'+im,
-            "views": views,
-            "likes": random.randint(0, views),
+            "shares": shares,
+            "likes": random.randint(0, shares),
             })
 
     cat_images = []
     for im in os.listdir(path+'/cats/'):
         #print path+'/cats/'+im
         #print im.split('.')[0]
-        views = random.randint(0, 150)
+        shares = random.randint(0, 150)
         cat_images.append({
             "title": im.split('.')[0],
             "author": user_profiles[random.randint(0, len(user_profiles)-1)],
             "image": path+'/cats/'+im,
-            "views": views,
-            "likes": random.randint(0, views),
+            "shares": shares,
+            "likes": random.randint(0, shares),
             })
 
     cats = { "Funny":{"images": funny_images},
@@ -83,7 +83,7 @@ def populate ():
 
         c = add_cat(cat)
         for p in cat_data["images"]:
-            image = add_image(c, p["title"], p["author"], p["image"], p["views"], p["likes"])
+            image = add_image(c, p["title"], p["author"], p["image"], p["shares"], p["likes"])
             # add some comments to the image
             for i in range(0, random.randint(1, 2*len(user_profiles))):
                 # generate random string
@@ -111,7 +111,7 @@ def add_comment(author, text, image, likes=0):
     C.save()
     return C
 
-def add_image(cat, title, author, image, views=0, likes=0):
+def add_image(cat, title, author, image, shares=0, likes=0):
     I = Image.objects.get_or_create(category=cat, title=title, author=author)[0]
 
     img_temp = NamedTemporaryFile(delete=True)
@@ -120,12 +120,12 @@ def add_image(cat, title, author, image, views=0, likes=0):
     I.image.save(title, File(img_temp), save=True)
 
     print I.image.url
-    I.views = views
+    I.shares = shares
     I.likes = likes
     I.save()
     return I
 
-def add_cat(name, views=0, likes=0):
+def add_cat(name, shares=0, likes=0):
     c = Category.objects.get_or_create(name=name)[0]
     c.save()
     return c

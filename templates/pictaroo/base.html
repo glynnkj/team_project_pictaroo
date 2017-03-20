@@ -130,7 +130,7 @@
           </div>
           <div>
           <br />
-          Search your enjoy category
+          Search Pictaroo:
           <ul class="nav nav-list flex-column">
           <form>
           <li class="nav-item">
@@ -235,7 +235,14 @@
 		<br />
 		<p>2 Comments--------------------------------------------------------------------------------</p>
 		<br/>
-			<p>{{ comment.author }} {{ comment.text }}"</p>
+        <div>
+           FUNNY AS HELL LOL!!!!!!!! ;D
+             <strong id="comment_like_count">{{ comment.likes }}</strong>
+            {% if user.is_authenticated %}
+			    <button id="likes_comments" class="btn btn-primary btn-sm" data-commentid=""{{ comment.id }} >Upvote</button>
+             {% endif %}
+        </div>
+
 
   </div>
 </div>
