@@ -1,6 +1,42 @@
 {% extends 'pictaroo/base.html' %}
 {% load staticfiles %}
 
+{% block title_block %}
+    Pictaroo - Home
+{% endblock %}
+
 {% block body_block %}
-NEED TO ADD MOST LIKED IMAGES HERE
+
+
+<div>
+    <h1>Trending Uploads </h1>
+        {% if images %}
+                {% for image in images %}
+                <div class="col-xs-6 col-lg-4">
+                  <div class="imagecard">
+                      <a href="#" class="thumbnail">
+                        <img src="{{ image.image.url }}" id="myImg" width="300" height="300" alt='missing' />
+                      </a>
+                    <div class="something">
+                      <img src="{{ MEDIA_URL }}likes.jpg" alt="likes" style="width:50px;height:50px;">
+                      <likes>{{ image.likes }}</likes>
+                      &nbsp;&nbsp;
+                      <img src="{{ MEDIA_URL }}share.png" alt="shares" style="width:50px;height:50px;">
+                      <shares>{{ image.shares }}</shares>
+                    </div>
+                    <hr />
+                    <img src="empty_profile.gif" alt="profile" style="width:50px;height:50px;">
+                    <topcomment>Top comment here </topcomment>
+                    <div>
+                        <br/>
+                        {{ comment.author }} {{ comment.text }}"
+                    </div>
+                  </div>
+                </div><!--/.col-xs-6.col-lg-4-->
+
+                {% endfor %}
+        {% else %}
+            <strong>No Viral Images</strong>
+        {% endif %}
+</div>
 {% endblock %}

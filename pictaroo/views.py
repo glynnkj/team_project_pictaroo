@@ -45,10 +45,10 @@ def visitor_cookie_handler(request):
 def index(request):
     request.session.set_test_cookie()
 
-    category_list = Category.objects.order_by('-likes')[:5]
-    image_list = Image.objects.order_by('-views')[:5]
 
-    context_dict={'categories':category_list,'images':image_list}
+    image_list = Image.objects.order_by('-likes')[:30]
+
+    context_dict={'images':image_list}
     #call function to handle the cookies
     visitor_cookie_handler(request)
     context_dict['visits'] = request.session['visits']

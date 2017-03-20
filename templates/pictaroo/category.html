@@ -20,7 +20,7 @@
                       <likes>{{ image.likes }}</likes>
                       &nbsp;&nbsp;
                       <img src="{{ MEDIA_URL }}share.png" alt="shares" style="width:50px;height:50px;">
-                      <shares>{{ image.views }}</shares>
+                      <shares>{{ image.shares }}</shares>
                     </div>
                     <hr />
                     <img src="empty_profile.gif" alt="profile" style="width:50px;height:50px;">
@@ -30,7 +30,7 @@
                         {{ comment.author }} {{ comment.text }}"
                     </div>
                   </div>
-                </div><!--/.col-xs-6.col-lg-4-->
+                </div>
 
                 {% endfor %}
 

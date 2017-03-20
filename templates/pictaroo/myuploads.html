@@ -20,9 +20,11 @@
 
     {% if images|length != 0 %}
             {% for image in images %}
-                    {{ image.title }}
+                    <strong>Category: </strong>{{ image.category.name }}
+                    <strong>Title: </strong>{{ image.title }}
+                    <strong>Like: </strong>{{ image.likes }}
                 <a href="/pictaroo/category/{{ image.category.slug }}">
-                    <img src= {{ image.image.url }}  width="300" height="300" alt='missing' /><br/>
+                    <img src= {{ image.image.url }}  width="500" height="500" alt='missing' /><br/>
                 </a>
             {% endfor %}
     {% else %}
