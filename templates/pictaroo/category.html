@@ -6,28 +6,35 @@
 
 {% block body_block %}
     {% if category %}
-        <h1>{{ category.name }}</h1>
-
         {% if images %}
-            <ul>
-                {% for image in images %}
-                    <li>
-                        <figure>
-                            <img src="{{ image.image.url }}" width="300" height="300" alt='missing' />
-                            <figcaption>
-                                "{{ image.title }} likes: {{ image.likes }} views: {{ image.views }}
-                                <br/>
-                                {{ comment.author }} {{ comment.text }}"
-                            </figcaption>
-                            <form action="action_page">
-                            <input type="text" name="Suggestion" style="width:545px; height:50px"><br/>
-                            <input type="submit" value="Submit">
-                            </form>
-                        </figure>
 
-                    </li>
+                {% for image in images %}
+
+                <div class="col-xs-6 col-lg-4">
+                  <div class="imagecard">
+                      <a href="#" class="thumbnail">
+                        <img src="{{ image.image.url }}" id="myImg" width="300" height="300" alt='missing' />
+                      </a>
+                    <div class="something">
+                      <img src="{{ MEDIA_URL }}likes.jpg" alt="likes" style="width:50px;height:50px;">
+                      <likes>{{ image.likes }}</likes>
+                      &nbsp;&nbsp;
+                      <img src="{{ MEDIA_URL }}share.png" alt="shares" style="width:50px;height:50px;">
+                      <shares>{{ image.views }}</shares>
+                    </div>
+                    <hr />
+                    <img src="empty_profile.gif" alt="profile" style="width:50px;height:50px;">
+                    <topcomment>Top comment here </topcomment>
+                    <div>
+                        <br/>
+                        {{ comment.author }} {{ comment.text }}"
+                    </div>
+
+                  </div>
+                </div><!--/.col-xs-6.col-lg-4-->
+
                 {% endfor %}
-            </ul>
+
         {% else %}
             <strong>No images currently in category. </strong>
         {% endif %}
@@ -36,7 +43,10 @@
         {% else %}
                 Please register OR login to add a new Image
         {% endif %}
+
     {% else %}
         the specified category does not exist!
     {% endif %}
+
+
 {% endblock %}
