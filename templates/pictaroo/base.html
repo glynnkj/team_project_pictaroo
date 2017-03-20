@@ -214,9 +214,13 @@
 		<img class="modal-content" id="img01">
 		<br />
 		<div align="center">
-			<button class="button-popup" id="like" >Like</button>
+
+            <strong id="image_like_count">{{ image.likes }}</strong>
+            {% if user.is_authenticated %}
+			    <button id="likes" class="btn btn-primary btn-sm" data-imageid=""{{ image.id }} >Like</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<button class="button-popup" id="share" >Share</button>
+			    <button class="button-popup" id="share" >Share</button>
+
 			<br />
 			<br />
 			<div class="comment-input">
@@ -227,11 +231,11 @@
 				</form>
 			</div>
 		</div>
+            {% endif %}
 		<br />
 		<p>2 Comments--------------------------------------------------------------------------------</p>
 		<br/>
-			<p> This post gave me aids</p>
-			<p> Wow so funny</p>
+			<p>{{ comment.author }} {{ comment.text }}"</p>
 
   </div>
 </div>

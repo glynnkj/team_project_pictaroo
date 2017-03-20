@@ -27,7 +27,8 @@ class ImageForm(forms.ModelForm):
     title = forms.CharField(max_length=128,
                             help_text="Please enter the title of the Image.")
     image = forms.ImageField(required=True)
-
+    likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    shares = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
     class Meta:
             #Provide an association between the ModelForm and a model

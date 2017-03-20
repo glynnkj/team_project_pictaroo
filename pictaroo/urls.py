@@ -26,6 +26,6 @@ urlpatterns = [
 
     url(r'^my_account/(?P<username>[\w\-]+)/$', views.my_account, name='my_account'),
 
-
+    url(r'^image_like/$', views.like_image, name='like_category'),
 
 ]

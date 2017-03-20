@@ -44,6 +44,7 @@ def visitor_cookie_handler(request):
 
 def index(request):
     request.session.set_test_cookie()
+
     category_list = Category.objects.order_by('-likes')[:5]
     image_list = Image.objects.order_by('-views')[:5]
 
@@ -105,7 +106,7 @@ def show_category(request, category_name_slug):
         #note that filter() will return a list of image objects or an empty list
 
         images = sort_images(category)
-        #images = Image.objects.filter(category=category)
+
 
         #add our results list to the template context under name images
         context_dict['images'] = images
@@ -204,27 +205,28 @@ def my_comments(request):
     #form = CommentForm({'author': Comment.author, 'text': Comment.text })
 
     comment_list = Comment.objects.filter(author=UserProfile.objects.get(user=request.user))
-    print(comment_list)
+    
     context_dict = {'comments': comment_list}
 
     return render(request, 'pictaroo/mycomments.html', context_dict)
 
 @login_required
 def my_favourites(request):
-    return render(request, 'pictaroo/myfavourites.html')
+
+    favourites = Image.objects.filter(likes=UserProfile.objects.get(user=request.user))
+    context_dict = {'likes': favourites}
+
+    return render(request, 'pictaroo/myfavourites.html', context_dict)
 
 @login_required
 def my_uploads(request):
-
     image_list = Image.objects.filter(author=UserProfile.objects.get(user=request.user))
     context_dict = {'images': image_list}
-
     return render(request, 'pictaroo/myuploads.html', context_dict)
 
 @login_required
 def my_friends(request):
     return render(request, 'pictaroo/friends.html')
-
 
 # Chapter 14 Make Rango Tango - Create a Profile Registration view, corresponding view to handle the processing
 # of a UserProfileForm. the subsequent creation of a new UserProfile instance and instructing Django to
@@ -246,7 +248,6 @@ def register_profile(request):
     context_dict = {'form':form}
 
     return render(request, 'pictaroo/profile_registration.html', context_dict)
-
 
 def find(request):
     def get_list(max_results=0, starts_with=''):
@@ -270,3 +271,19 @@ def find(request):
     list = get_list(10, starts_with)
 
     return render(request, 'rango/cats.html', {'lists': list})
+
+#Function of this method is to incorporate a like button
+# for user favourite category
+@login_required()
+def like_image(request):
+    image_id =None
+    if request.method == 'GET':
+        image_id = request.GET['image_id']
+    likes = 0
+    if image_id:
+        image = Image.objects.get(id=int(image_id))
+        if image:
+            likes = image.likes+1
+            image.likes = likes
+            image.save()
+    return HttpResponse(likes)

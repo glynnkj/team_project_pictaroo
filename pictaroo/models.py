@@ -29,6 +29,7 @@ class UserProfile(models.Model):
     picture = models.ImageField(upload_to='profile_images', blank=True)
     bio = models.TextField(default='', blank=True)
 
+
     #Override the __unicode__() method to return out something meaningful
 
     def __str__(self):
@@ -39,7 +40,7 @@ class Image(models.Model):
     category = models.ForeignKey(Category)
     author = models.ForeignKey(UserProfile)
     title = models.CharField(max_length=128)
-    views = models.IntegerField(default=0)
+    shares = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     image = models.ImageField(upload_to='images', blank=True)
 
